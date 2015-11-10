@@ -1,0 +1,32 @@
+body {
+    font-family: Helvetica, Arial, Sans-Serif;
+}
+
+#vkb {
+    width: 160px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.vkb-row {
+    height: 50px;
+}
+
+.vkb-btn {
+    display: inline-block;
+    width: 48px;
+    padding: 10px 0;
+    border: 1px solid #222;
+    border-radius: 11px;
+}
+
+a {
+    color: #222;
+    text-decoration: none;
+    text-align: center;
+}
+
+a:hover {
+    background-color: #222;
+    color: #fff;
+}

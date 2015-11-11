@@ -15,7 +15,7 @@ function validateAccount(){
   var accountpin = $("#numpin").val();
   //constraining the length of the account number to be 16 characters long, numeric and greater than 0
   if(validAccNum(accountnumber) && validPin(accountpin)){
-    $("input[id=submitButton]").prop("disabled", false);
+    $("input[id=submitAccountInfo]").prop("disabled", false);
 
     var users = {
       'accountNumber': accountnumber,
@@ -25,7 +25,7 @@ function validateAccount(){
     };
     updateSessionStorage(users);
   } else {
-    $("input[id=submitButton]").prop("disabled", true);
+    $("input[id=submitAccountInfo]").prop("disabled", true);
   }
 }
 

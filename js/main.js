@@ -1,14 +1,63 @@
 var init_savings_balance = getSavingsBalance();
 var init_chequing_balance = getChequingBalance();
 var account_num = getAccountNum();
+var account_num_focus = true;
 
 $(document).ready(function() {
-  validateAccount();
-  $("#accnum").keyup(validateAccount);
-  $("#numpin").keyup(validateAccount);
+  $("#accnum").focus();
+  $("#pin").hide();
+  $("#vkb-btn-enter").addClass("disabled");
+  $("#vkb-btn-del").addClass("disabled");
+  keyboardInput();
   var users = JSON.parse(sessionStorage.getItem('User'));
   init_money(users);
 });
+
+// Virtual Keyboard Stuff ===============================
+
+// disable keyboard input
+$(document).on('keydown',function(e) { 
+  e.preventDefault();
+});
+
+function keyboardInput() {
+  $(document).on('click', '.vkb-btn', function(e) {
+    e.preventDefault();
+    var input, maxlen;
+    if (account_num_focus) {
+      input = $('#accnum');
+      maxlen = 16;
+    } else {
+      input = $('#numpin');
+      maxlen = 4;
+    }
+    if (e.target.id !== "vkb-btn-del" && e.target.id !== "vkb-btn-enter" && input.val().length < maxlen) {
+      input.val(input.val() + e.target.text);
+    } else if (e.target.id === "vkb-btn-del") {
+      input.val(input.val().slice(0,-1));
+      $("#vkb-btn-enter").addClass("disabled");
+      if (input.val().length === 0)
+        $("#vkb-btn-del").addClass("disabled");
+    } else if (e.target.id === "vkb-btn-enter") {
+      if (account_num_focus) {
+        $("#pin").show();
+        $("#numpin").focus();
+        account_num_focus = false;
+      } else {
+        validateAccount();
+        location.href = 'dash.html';
+      }
+    }
+    if (input.val().length > 0) {
+      $("#vkb-btn-del").removeClass("disabled");
+    }
+    if (input.val().length == maxlen) {
+      $("#vkb-btn-enter").removeClass("disabled");
+    }
+  });
+}
+
+// Virtual Keyboard Stuff Ends ==========================
 
 function validateAccount(){
   var accountnumber = $("#accnum").val();

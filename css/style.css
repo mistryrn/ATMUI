@@ -1,6 +1,10 @@
+/* GENERAL */
 html {
-    background-color: #1D344B;
+    background-color: #1D242B;
     font-family: Helvetica;
+}
+body {
+    font-family: Helvetica, Arial, Sans-Serif;
 }
 h1 {
     color: white;
@@ -10,6 +14,45 @@ h2 {
     text-transform: uppercase;
     margin-top: -20px;
 }
+
+/* VIRTUAL KEYBOARD */
+#vkb {
+    width: 160px;
+    height: 200px;
+}
+.vkb-row {
+    height: 50px;
+}
+.vkb-btn {
+    display: inline-block;
+    width: 48px;
+    padding: 10px 0;
+    border: 1px solid #676767;
+    border-radius: 11px;
+    background-color: #40505F;
+}
+#vkb-btn-del {
+    background-color: #E74C3C;
+}
+#vkb-btn-enter {
+    background-color: #2ECC71;
+}
+a {
+    color: #222;
+    text-decoration: none;
+    text-align: center;
+}
+a:hover {
+    background-color: #2A3743;
+    color: #fff;
+}
+a.disabled {
+    opacity: 0.25;
+    pointer-events: none;
+    cursor: default;
+}
+
+/* DASHBOARD */
 #right {
     float: right;
 }

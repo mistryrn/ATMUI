@@ -4,6 +4,7 @@ var account_num = getAccountNum();
 var account_num_focus = true;
 
 $(document).ready(function() {
+  $("#completionAlert").hide();
   $("#accnum").focus();
   $("#pin").hide();
   $("#vkb-btn-enter").addClass("disabled");
@@ -16,7 +17,7 @@ $(document).ready(function() {
 // Virtual Keyboard Stuff ===============================
 
 // disable keyboard input
-$(document).on('keydown',function(e) { 
+$(document).on('keydown',function(e) {
   e.preventDefault();
 });
 
@@ -130,4 +131,15 @@ function setChequingBalance(amt){
 
 function updateSessionStorage(user){
   sessionStorage.setItem("User", JSON.stringify(user));
+}
+
+function thankyouAlert(){
+  $("#transactionpage").hide();
+  $("#completionAlert").show();
+  setTimeout(closeAlert, 3000);
+}
+
+function closeAlert(){
+  $("#completionAlert").fadeOut("slow");
+  location.href = "index.html";
 }

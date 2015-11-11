@@ -13,13 +13,13 @@ $(document).ready(function() {
 function validateAccount(){
   var accountnumber = $("#accnum").val();
   var accountpin = $("#numpin").val();
-	//constraining the length of the account number to be 16 characters long, numeric and greater than 0
-	if(validAccNum(accountnumber) && validPin(accountpin)){
-		$("input[type=button]").prop("disabled", false);
+  //constraining the length of the account number to be 16 characters long, numeric and greater than 0
+  if(validAccNum(accountnumber) && validPin(accountpin)){
+    $("input[type=button]").prop("disabled", false);
 
-		var users = {
-			'accountNumber': accountnumber,
-			'accountPin': accountpin,
+    var users = {
+      'accountNumber': accountnumber,
+      'accountPin': accountpin,
       'chequingBalance': 2000,
       'savingsBalance': 5000
     };

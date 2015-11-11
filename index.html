@@ -1,31 +1,24 @@
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Bank</title>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-<!-- jQuery library -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+	<title>Bank</title>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="main.js"></script>
 </head>
 <body>
-<h1 id> Enter Account Number.</h1>
-<input type = "text" id="accnum">
-<button id = "submit">Next</button>
-<div id = "errorbox"><h1></h1></div>
-<script>
-	$("#submit").click(function(){
-		//write account number to JSON file
-		var accountnumber = $("#accnum").val().toString();
-		//constraining the length of the account number to be 16 characters long, numeric and greater than 0
-		if($.isNumeric(accountnumber) == true || accountnumber > 0 || accountnumber.length == 16){
-			$("#errorbox").text("Success");
-		}else{
-			$("#errorbox").text("Invalid account number. Please try again.");
-		}
-	});
-</script>
+	<h1 id> Enter Account Number.</h1>
+	<input type = "text" id="accnum" maxlength="16">
+	<div id = "pin">
+	<h1>Enter PIN</h1>
+	<input type = "password" id="numpin" maxlength="4">
+	</div>
+	<input type = "button" onclick="location.href='dash.html';" value="Next" id ="submitButton">
+
 </body>
 </html>

@@ -1,0 +1,22 @@
+html {
+    background-color: #1D344B;
+    font-family: Helvetica;
+}
+h1 {
+    color: white;
+}
+h2 {
+    color: #6AA3AD;
+    text-transform: uppercase;
+    margin-top: -20px;
+}
+#right {
+    float: right;
+}
+#left {
+    float: left;
+}
+#lower {
+    position: absolute;
+    bottom: 0;
+}

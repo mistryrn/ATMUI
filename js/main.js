@@ -3,6 +3,7 @@ var init_chequing_balance = getChequingBalance();
 var account_num = getAccountNum();
 
 $(document).ready(function() {
+  $("#completionAlert").hide();
   validateAccount();
   $("#accnum").keyup(validateAccount);
   $("#numpin").keyup(validateAccount);
@@ -81,4 +82,15 @@ function setChequingBalance(amt){
 
 function updateSessionStorage(user){
   sessionStorage.setItem("User", JSON.stringify(user));
+}
+
+function thankyouAlert(){
+  $("#transactionpage").hide();
+  $("#completionAlert").show();
+  setTimeout(closeAlert, 3000);
+}
+
+function closeAlert(){
+  $("#completionAlert").fadeOut("slow");
+  location.href = "index.html";
 }

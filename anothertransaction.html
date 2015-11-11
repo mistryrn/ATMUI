@@ -6,7 +6,6 @@
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Bank</title>
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -14,9 +13,12 @@
   <script src="js/main.js"></script>
 </head>
 <body>
+<div id="transactionpage">
   <h1>Transaction was successful!</h1>
   <h1>Would you like to perform another transaction?</h1>
   <input type="button" id = "yes" onclick="location.href='dash.html';" value="Yes">
-  <input type="button" id = "no" onclick="location.href='index.html';" value="No">
+  <input type="button" id = "no" onclick="thankyouAlert();" value="No">
+  </div>
+  <div id = "completionAlert"><h1>Thank you for banking with us! Have a great day!</h1></div>
 </body>
 </html>

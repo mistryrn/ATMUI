@@ -7,18 +7,31 @@
 	<title>Bank</title>
 	<!-- Bootstrap -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/normalize.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<!-- jQuery library -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script src="main.js"></script>
+	<script src="js/main.js"></script>
 </head>
 <body>
 	<h1 id> Enter Account Number.</h1>
 	<input type = "text" id="accnum" maxlength="16">
 	<div id = "pin">
-	<h1>Enter PIN</h1>
-	<input type = "password" id="numpin" maxlength="4">
-	</div>
-	<input type = "button" onclick="location.href='dash.html';" value="Next" id ="submitButton">
+   <h1>Enter PIN</h1>
+   <input type = "password" id="numpin" maxlength="4">
+ </div>
+ <input type = "button" onclick="location.href='dash.html';" value="Next" id ="submitButton">
+ <script>
+ $(document).ready(function() {
+   var users = {
+     'accountNumber': 0,
+     'accountPin': 0,
+     'chequingBalance': 0,
+     'savingsBalance': 0
+   };
 
+   sessionStorage.setItem("User", JSON.stringify(users));
+ });
+ </script>
 </body>
 </html>

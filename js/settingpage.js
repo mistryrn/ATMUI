@@ -54,6 +54,8 @@ function validateInfo(){
     userInfo['accountPin'] = $("#newpin1").val();
     sessionStorage.setItem("User", JSON.stringify(userInfo));
     location.href = "dash.html";
+  }else{
+    $("#feedback").text("Error. Either your initial pin was wrong or you did not type the same new pin.");
   }
 
 }

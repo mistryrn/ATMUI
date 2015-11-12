@@ -149,3 +149,8 @@ function withdrawMoneyUpdate(amt, action, storage){
   }
   location.href = 'anothertransaction.html';
 }
+
+function presetAmount(amount){
+  $("#amountUpdate").val(amount);
+  updateMoney();
+}

@@ -101,7 +101,7 @@ function setText(){
     $("#accountinfo").text("Savings Deposit");
   } else if(storage['accountAction'] == "chequing" && storage['accountType'] == "withdraw"){
     $("#accountinfo").text("Chequing Withdraw");
-  } else if(storage['accountAction'] == "savings" && storage['accountType'] == "withdraw"){
+  } else{
     $("#accountinfo").text("Savings Withdraw");
   }
 }

@@ -57,7 +57,8 @@ header h1 {
 #start-btn:hover {
     background-color: #1F844A;
 }
-#main-2 h1, #main-3 h1 {
+#main-1 h1, #main-2 h1, #main-3 h1,
+#main-1 h2, #main-2 h2, #main-3 h2 {
     margin-bottom: 10px;
 }
 #main-2, #main-3 {
@@ -83,7 +84,7 @@ header h1 {
     margin-left: -150px;
     bottom: 0;
     width: 300px;
-    height: 300px;
+    height: 235px;
 }
 .vkb-row {
     height: 60px;

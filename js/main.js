@@ -142,6 +142,7 @@ function thankyouAlert(){
 function closeAlert(){
   $("#completionAlert").fadeOut("slow");
   location.href = "index.html";
+}
 
 function getSessionStorage(){
   return JSON.parse(sessionStorage.getItem('User'));

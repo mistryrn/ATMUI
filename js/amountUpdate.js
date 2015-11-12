@@ -1,8 +1,13 @@
+var init_savings_balance = getSavingsBalance();
+var init_chequing_balance = getChequingBalance();
+var account_num = getAccountNum();
+
 $(document).ready(function() {
   $("#amountUpdate").focus();
   $("#vkb-btn-del").addClass("disabled");
   keyboardInput();
   var users = getSessionStorage();
+  init_money(users);
 });
 
 // disable keyboard input
@@ -28,6 +33,12 @@ function keyboardInput() {
       $("#vkb-btn-del").removeClass("disabled");
     }
   });
+}
+
+function init_money(users){
+  setSavingsBalance(init_savings_balance);
+  setChequingBalance(init_chequing_balance);
+  setAccountNum(account_num);
 }
 
 function getSavingsBalance(){
@@ -60,6 +71,18 @@ function updateSessionStorage(user){
 
 function getSessionStorage(){
   return JSON.parse(sessionStorage.getItem('User'));
+}
+
+function getAccountNum(){
+  var users = getSessionStorage();
+  return users['accountNumber'];
+}
+
+function setAccountNum(num){
+  var users = getSessionStorage();
+  users['accountNumber'] = num;
+  updateSessionStorage(users);
+  $("#accountnum").text(users['accountNumber']);
 }
 
 function accountUpdate(el){

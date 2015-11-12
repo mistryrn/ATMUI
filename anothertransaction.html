@@ -1,14 +1,10 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Bank</title>
-  <!-- Bootstrap -->
+  <title>Would You Like to Make Another Transaction?</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
+  <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <script>
@@ -18,21 +14,45 @@
   </script>
 </head>
 <body>
+  <header>
+    <div id="header-left">
+      <h1>Tigran Martikian</h1>
+      <h2>Card Holder</h2>
+      <h1><div id="accountnum"></div></h1>
+      <h2>Account Number</h2>
+    </div>
+    <div id="header-right">
+      <h1><div id="chequingBalance"></div></h1>
+      <h2>Chequing Balance</h2>
+      <h1><div id="savingsBalance"></div></h1>
+      <h2>Savings Balance</h2>
+    </div>
+  </header>
   <div id="transactionpage">
-    <h1>Transaction was successful!</h1>
-    <h1>Would you like to perform another transaction?</h1>
-    <input type="button" id = "yes" onclick="location.href='dash.html';" value="Yes">
-    <input type="button" id = "no" onclick="thankyouAlert();" value="No">
+    <h1>Your transaction was successful!</h1>
+    <h2>Would you like to perform another transaction?</h2>
+    <a id = "yes" class="vkb-btn" onclick="location.href='dash.html';">Yes</a>
+    <a id = "no" class="vkb-btn" onclick="thankyouAlert();">No</a>
   </div>
   <div id = "completionAlert"><h1>Thank you for banking with us! Have a great day!</h1></div>
-    <h1>Receipt</h1>
-    <h1>Account Number</h1>
-    <h2><div id="acc_num"></div></h2>
-    <h1>Chequing Balance</h1>
-    <h2><div id="cheq_balance"></div></h2>
-    <h1>Savings Balance</h1>
-    <h2><div id="saving_balance"></div></h2>
-    <h1>Date</h1>
-    <h2><div id="date"></div></h2>
+  <div id="receipt">
+    <h1 id="receipt-title">Transaction Receipt</h1>
+    <div class="receipt-row">
+      <h1 class="receipt-heading">Account Number</h1>
+      <h2 class="receipt-value"><div id="acc_num"></div></h2>
+    </div>
+    <div class="receipt-row">
+      <h1 class="receipt-heading">Chequing Balance</h1>
+      <h2 class="receipt-value"><div id="cheq_balance"></div></h2>
+    </div>
+    <div class="receipt-row">
+      <h1 class="receipt-heading">Savings Balance</h1>
+      <h2 class="receipt-value"><div id="saving_balance"></div></h2>
+    </div>
+    <div class="receipt-row">
+      <h1 class="receipt-heading">Date</h1>
+      <h2 class="receipt-value"><div id="date"></div></h2>
+    </div>
+  </div>
 </body>
 </html>

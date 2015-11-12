@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard</title>
+  <title>Generic Bank ATM Dashboard</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <!-- jQuery library -->
@@ -9,29 +9,33 @@
   <script src="js/main.js"></script>
 </head>
 <body>
-  <div id="container">
-    <div id="left">
-      <div id="upper">
-        <h1>Tigran Martikian</h1>
-        <h2>Card Holder</h2>
-        <h1><div id="accountnum"></div></h1>
-        <h2>Account Number</h2>
-      </div>
-      <div id="lower">
-        <h2><div id="error-msg-dash"></div></h2>
-        <a href="accounts-withdraw.html"><h1>Withdraw</h1></a>
-        <a href="accounts-deposit.html"><h1>Deposit</h1></a>
-        <a href="transfer-funds.html"><h1>Transfer Funds</h1></a>
-        <a href="#" onclick="fastCash(60,'chequing')"><h1>Fast Cash: $60</h1></a>
-        <a href="settings.html"><h1>Settings</h1></a>
-        <a href="index.html" onclick="logout()"><h1>Log Out</h1></a>
-      </div>
+  <header>
+    <div id="header-left">
+      <h1>Tigran Martikian</h1>
+      <h2>Card Holder</h2>
+      <h1><div id="accountnum"></div></h1>
+      <h2>Account Number</h2>
     </div>
-    <div id="right">
+    <div id="header-right">
       <h1><div id="chequingBalance"></div></h1>
       <h2>Chequing Balance</h2>
       <h1><div id="savingsBalance"></div></h1>
       <h2>Savings Balance</h2>
+    </div>
+  </header>
+  <div id="button-container">
+    <div id="buttons">
+      <h2><div id="error-msg-dash"></div></h2>
+      <div id="buttons-top">
+        <a href="accounts-withdraw.html" class="dash-btn">Withdraw</a>
+        <a href="accounts-deposit.html" class="dash-btn">Deposit</a>
+        <a href="transfer-funds.html" class="dash-btn">Transfer Funds</a>
+      </div>
+      <div id="buttons-bottom">
+        <a href="#" onclick="fastCash(60,'chequing')" class="dash-btn">Fast Cash: $60</a>
+        <a href="settings.html" class="dash-btn">Change Pin</a>
+        <a href="index.html" onclick="logout()" class="dash-btn">Log Out</a>
+      </div>
     </div>
   </div>
 </body>

@@ -147,3 +147,7 @@ function closeAlert(){
 function getSessionStorage(){
   return JSON.parse(sessionStorage.getItem('User'));
 }
+
+function logout(){
+  sessionStorage.clear();
+}

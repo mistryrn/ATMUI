@@ -18,7 +18,7 @@ $(document).on('keydown',function(e) {
 function keyboardInput() {
   $(document).on('click', '.vkb-btn', function(e) {
     e.preventDefault();
-    var input = $("#amountUpdate");
+    var input = $("#transfer-amount");
     if (e.target.id !== "vkb-btn-del" && e.target.id !== "vkb-btn-enter") {
       input.val(input.val() + e.target.text);
     } else if (e.target.id === "vkb-btn-del") {
@@ -26,7 +26,7 @@ function keyboardInput() {
       if (input.val().length === 0)
         $("#vkb-btn-del").addClass("disabled");
     } else if (e.target.id === "vkb-btn-enter") {
-        updateMoney();
+        transferMoney();
     }
     if (input.val().length > 0) {
       $("#vkb-btn-del").removeClass("disabled");
@@ -84,50 +84,35 @@ function setAccountNum(num){
   $("#accountnum").text(users['accountNumber']);
 }
 
-function accountUpdate(el){
-  ids = $(el).attr('id').split('-');
+function transferMoney(){
   var storage = getSessionStorage();
-  storage['accountAction'] = ids[0];
-  storage['accountType'] = ids[1];
-  updateSessionStorage(storage);
-}
-
-function setText(){
-  var storage = getSessionStorage();
-  if (storage['accountAction'] == "chequing" && storage['accountType'] == "deposit"){
-    $("#accountinfo").text("Chequing Deposit");
-  } else if(storage['accountAction'] == "savings" && storage['accountType'] == "deposit"){
-    $("#accountinfo").text("Savings Deposit");
-  } else if(storage['accountAction'] == "chequing" && storage['accountType'] == "withdraw"){
-    $("#accountinfo").text("Chequing Withdraw");
-  } else {
-    $("#accountinfo").text("Savings Withdraw");
+  var from_acc = $("#from_acc").find(":selected").text();
+  var to_acc = $("#to_acc").find(":selected").text();
+  var amount_to_transfer = parseInt($("#transfer-amount").val());
+  if (from_acc == to_acc){
+    $("#transfer-money").text("Sorry, you cannot transfer money from and to the same account");
+    return false;
   }
-}
 
-function updateMoney(){
-  var storage = getSessionStorage();
-  var amount = $("#amountUpdate").val();
-  var transactionType = storage['accountType'];
-  var action = storage['accountAction']
-  if (transactionType == "deposit"){
-    //deposit
-    depositMoneyUpdate(amount, action, storage);
+  if (from_acc == "Chequing" && to_acc == "Savings"){
+    if (amount_to_transfer > getChequingBalance()){
+      $("#transfer-money").text("Sorry, you cannot transfer more money than you have in your chequing account!");
+      return false;
+    }
+    depositMoneyUpdate(amount_to_transfer, "savings", storage);
+    withdrawMoneyUpdate(amount_to_transfer, "chequing", storage);
   } else {
-    //withdraw
-    withdrawMoneyUpdate(amount, action, storage);
+    if (amount_to_transfer > getSavingsBalance()){
+      $("#transfer-money").text("Sorry, you cannot transfer more money than you have in your saving account!");
+      return false;
+    }
+    depositMoneyUpdate(amount_to_transfer, "chequing", storage);
+    withdrawMoneyUpdate(amount_to_transfer, "savings", storage);
   }
+  location.href = 'dash.html';
 }
 
 function depositMoneyUpdate(amt, action, storage){
-  if (amt < 0) {
-    $("#error-update").text("You cannot deposit less than zero dollars!");
-    return false;
-  }
-  if (amt == 0) {
-    $("#error-update").text("You cannot deposit zero dollars!");
-    return false;
-  }
   if (action == "chequing"){
     //update chequing
     old_amt = parseInt(getChequingBalance());
@@ -139,43 +124,18 @@ function depositMoneyUpdate(amt, action, storage){
     new_amt = old_amt + parseInt(amt);
     setSavingsBalance(new_amt);
   }
-  location.href = 'anothertransaction.html';
 }
 
 function withdrawMoneyUpdate(amt, action, storage){
-  if (amt < 0) {
-    $("#error-update").text("You cannot withdraw less than zero dollars!");
-    return false;
-  }
-  if (amt == 0) {
-    $("#error-update").text("You cannot withdraw zero dollars!");
-    return false;
-  }
   if (action == "chequing"){
     //update chequing
     old_amt = parseInt(getChequingBalance());
     new_amt = old_amt - parseInt(amt);
-    if (amt > getChequingBalance()){
-      $("#error-update").text("You cannot withdraw more money than you have in your chequing account!");
-      return false;
-    } else {
-      setChequingBalance(new_amt);
-    }
+    setChequingBalance(new_amt);
   } else {
     //update savings
     old_amt = parseInt(getSavingsBalance());
     new_amt = old_amt - parseInt(amt);
-    if (amt > getSavingsBalance()){
-      $("#error-update").text("You cannot withdraw more money than you have in your savings account!");
-      return false;
-    } else {
-      setSavingsBalance(new_amt);
-    }
+    setSavingsBalance(new_amt);
   }
-  location.href = 'anothertransaction.html';
-}
-
-function presetAmount(amount){
-  $("#amountUpdate").val(amount);
-  updateMoney();
 }

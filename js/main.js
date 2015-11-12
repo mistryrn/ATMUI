@@ -147,3 +147,38 @@ function closeAlert(){
 function getSessionStorage(){
   return JSON.parse(sessionStorage.getItem('User'));
 }
+
+function logout(){
+  sessionStorage.clear();
+}
+
+function fastCash(amt, action){
+  storage = getSessionStorage();
+  if (getChequingBalance() < amt){
+    $("#error-msg-dash").text("Sorry, you cannot use Fast cash as you have less than $60 in your chequing account");
+    return false;
+  }
+  //update chequing
+  old_amt = parseInt(getChequingBalance());
+  new_amt = old_amt - parseInt(amt);
+  setChequingBalance(new_amt);
+}
+
+function receipt(){
+  var account = JSON.parse(sessionStorage.getItem('User'));
+  var account_num = account['accountNumber'];
+  var chequing_balance = account['chequingBalance'];
+  var saving_balance = account['savingsBalance']
+
+  $("#acc_num").text(account_num);
+  $("#cheq_balance").text(chequing_balance);
+  $("#saving_balance").text(saving_balance);
+  var currentdate = new Date();
+  var time = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/"
+                + currentdate.getFullYear() + " @ "
+                + currentdate.getHours() + ":"
+                + currentdate.getMinutes() + ":"
+                + currentdate.getSeconds();
+  $("#date").text(time);
+}

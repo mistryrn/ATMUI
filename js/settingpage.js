@@ -1,8 +1,14 @@
+var init_savings_balance = getSavingsBalance();
+var init_chequing_balance = getChequingBalance();
+var account_num = getAccountNum();
+
 $(document).ready(function() {
   $("#newpin").addClass("disabled");
   $("#vkb-btn-enter").addClass("disabled");
   $("#vkb-btn-del").addClass("disabled");
   keyboardInput();
+  var users = getSessionStorage();
+  init_money(users);
 });
 
 var field_num_focus = 1;
@@ -48,12 +54,66 @@ function keyboardInput() {
   });
 }
 
+function init_money(users){
+  setSavingsBalance(init_savings_balance);
+  setChequingBalance(init_chequing_balance);
+  setAccountNum(account_num);
+}
+
+function getSavingsBalance(){
+  var users = getSessionStorage();
+  return users['savingsBalance'];
+}
+
+function getChequingBalance(){
+  var users = getSessionStorage();
+  return users['chequingBalance'];
+}
+
+function getAccountNum(){
+  var users = getSessionStorage();
+  return users['accountNumber'];
+}
+
+function setAccountNum(num){
+  var users = getSessionStorage();
+  users['accountNumber'] = num;
+  updateSessionStorage(users);
+  $("#accountnum").text(users['accountNumber']);
+}
+
+function setAccountPin(pin){
+  var users = getSessionStorage();
+  users['accountPin'] = pin;
+  updateSessionStorage(users);
+}
+
+function setSavingsBalance(amt){
+  var users = getSessionStorage();
+  users['savingsBalance'] = amt;
+  updateSessionStorage(users);
+  $("#savingsBalance").text("$" + users['savingsBalance']);
+}
+
+function setChequingBalance(amt){
+  var users = getSessionStorage();
+  users['chequingBalance'] = amt;
+  updateSessionStorage(users);
+  $("#chequingBalance").text("$" + users['chequingBalance']);
+}
+
+function updateSessionStorage(user){
+  sessionStorage.setItem("User", JSON.stringify(user));
+}
+
+function getSessionStorage(){
+  return JSON.parse(sessionStorage.getItem('User'));
+}
+
 function validateInfo(){
-  var userInfo = JSON.parse(sessionStorage.getItem('User'));
+  var userInfo = getSessionStorage();
   if(userInfo['accountPin'] == $("#oldpin").val() && $("#newpin1").val() == $("#newpin2").val()){
-    userInfo['accountPin'] = $("#newpin1").val();
-    sessionStorage.setItem("User", JSON.stringify(userInfo));
+    setAccountPin($("#newpin1").val());
     location.href = "dash.html";
   }
-
 }

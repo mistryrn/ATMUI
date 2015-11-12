@@ -157,18 +157,20 @@ function fastCash(amt, action){
   if (getChequingBalance() < amt){
     $("#error-msg-dash").text("Sorry, you cannot use Fast cash as you have less than $60 in your chequing account");
     return false;
+  } else {
+    //update chequing
+    old_amt = parseInt(getChequingBalance());
+    new_amt = old_amt - parseInt(amt);
+    setChequingBalance(new_amt);
+    location.href = "anothertransaction.html";
   }
-  //update chequing
-  old_amt = parseInt(getChequingBalance());
-  new_amt = old_amt - parseInt(amt);
-  setChequingBalance(new_amt);
 }
 
 function receipt(){
   var account = JSON.parse(sessionStorage.getItem('User'));
   var account_num = account['accountNumber'];
   var chequing_balance = account['chequingBalance'];
-  var saving_balance = account['savingsBalance']
+  var saving_balance = account['savingsBalance'];
 
   $("#acc_num").text(account_num);
   $("#cheq_balance").text(chequing_balance);

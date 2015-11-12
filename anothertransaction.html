@@ -12,29 +12,27 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/main.js"></script>
   <script>
-  $(document).ready(function() {
-    receipt();
-  });
+    $(document).ready(function() {
+      receipt();
+    });
   </script>
 </head>
 <body>
-<div id="transactionpage">
-  <h1>Transaction was successful!</h1>
-  <h1>Would you like to perform another transaction?</h1>
-  <input type="button" id = "yes" onclick="location.href='dash.html';" value="Yes">
-  <input type="button" id = "no" onclick="thankyouAlert();" value="No">
+  <div id="transactionpage">
+    <h1>Transaction was successful!</h1>
+    <h1>Would you like to perform another transaction?</h1>
+    <input type="button" id = "yes" onclick="location.href='dash.html';" value="Yes">
+    <input type="button" id = "no" onclick="thankyouAlert();" value="No">
   </div>
   <div id = "completionAlert"><h1>Thank you for banking with us! Have a great day!</h1></div>
-  <div id = "reciept">
-  <h1>Receipt</h1>
-  <h1>Account Number</h1>
-  <h2><div id="acc_num"></div></h2>
-  <h1>Chequing Balance</h1>
-  <h2><div id="cheq_balance"></div></h2>
-  <h1>Savings Balance</h1>
-  <h2><div id="saving_balance"></div></h2>
-  <h1>Date</h1>
-  <h2><div id="date"></div></h2>
-  </div>
+    <h1>Receipt</h1>
+    <h1>Account Number</h1>
+    <h2><div id="acc_num"></div></h2>
+    <h1>Chequing Balance</h1>
+    <h2><div id="cheq_balance"></div></h2>
+    <h1>Savings Balance</h1>
+    <h2><div id="saving_balance"></div></h2>
+    <h1>Date</h1>
+    <h2><div id="date"></div></h2>
 </body>
 </html>

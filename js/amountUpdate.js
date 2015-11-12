@@ -95,10 +95,14 @@ function accountUpdate(el){
 
 function setText(){
   var storage = getSessionStorage();
-  if (storage['accountAction'] == "chequing"){
+  if (storage['accountAction'] == "chequing" && storage['accountType'] == "deposit"){
     $("#accountinfo").text("Chequing Deposit");
-  } else {
+  } else if(storage['accountAction'] == "savings" && storage['accountType'] == "deposit"){
     $("#accountinfo").text("Savings Deposit");
+  } else if(storage['accountAction'] == "chequing" && storage['accountType'] == "withdraw"){
+    $("#accountinfo").text("Chequing Withdraw");
+  } else{
+    $("#accountinfo").text("Savings Withdraw");
   }
 }
 
@@ -144,4 +148,9 @@ function withdrawMoneyUpdate(amt, action, storage){
     setSavingsBalance(new_amt);
   }
   location.href = 'anothertransaction.html';
+}
+
+function presetAmount(amount){
+  $("#amountUpdate").val(amount);
+  updateMoney();
 }

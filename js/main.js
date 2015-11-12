@@ -151,3 +151,15 @@ function getSessionStorage(){
 function logout(){
   sessionStorage.clear();
 }
+
+function fastCash(amt, action){
+  storage = getSessionStorage();
+  if (getChequingBalance() < amt){
+    $("#error-msg-dash").text("Sorry, you cannot use Fast cash as you have less than $60 in your chequing account");
+    return false;
+  }
+  //update chequing
+  old_amt = parseInt(getChequingBalance());
+  new_amt = old_amt - parseInt(amt);
+  setChequingBalance(new_amt);
+}

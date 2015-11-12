@@ -136,7 +136,7 @@ function setAccountNum(num){
   var users = getSessionStorage();
   users['accountNumber'] = num;
   updateSessionStorage(users);
-  $("#accountnum").text(users['accountNumber'].replace(/(.{4})/g,"$1 "));
+  $("#accountnum").text(users['accountNumber'].toString().replace(/(.{4})/g,"$1 "));
 }
 
 function setSavingsBalance(amt){

@@ -16,7 +16,7 @@ $(document).ready(function() {
 // Virtual Keyboard Stuff ===============================
 
 // disable keyboard input
-$(document).on('keydown',function(e) { 
+$(document).on('keydown',function(e) {
   e.preventDefault();
 });
 

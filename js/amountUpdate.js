@@ -27,7 +27,6 @@ function keyboardInput() {
         $("#vkb-btn-del").addClass("disabled");
     } else if (e.target.id === "vkb-btn-enter") {
         updateMoney();
-        location.href = 'anothertransaction.html';
     }
     if (input.val().length > 0) {
       $("#vkb-btn-del").removeClass("disabled");
@@ -101,7 +100,7 @@ function setText(){
     $("#accountinfo").text("Savings Deposit");
   } else if(storage['accountAction'] == "chequing" && storage['accountType'] == "withdraw"){
     $("#accountinfo").text("Chequing Withdraw");
-  } else{
+  } else {
     $("#accountinfo").text("Savings Withdraw");
   }
 }
@@ -121,6 +120,14 @@ function updateMoney(){
 }
 
 function depositMoneyUpdate(amt, action, storage){
+  if (amt < 0) {
+    $("#error-update").text("You cannot deposit less than zero dollars!");
+    return false;
+  }
+  if (amt == 0) {
+    $("#error-update").text("You cannot deposit zero dollars!");
+    return false;
+  }
   if (action == "chequing"){
     //update chequing
     old_amt = parseInt(getChequingBalance());
@@ -136,16 +143,34 @@ function depositMoneyUpdate(amt, action, storage){
 }
 
 function withdrawMoneyUpdate(amt, action, storage){
+  if (amt < 0) {
+    $("#error-update").text("You cannot withdraw less than zero dollars!");
+    return false;
+  }
+  if (amt == 0) {
+    $("#error-update").text("You cannot withdraw zero dollars!");
+    return false;
+  }
   if (action == "chequing"){
     //update chequing
     old_amt = parseInt(getChequingBalance());
     new_amt = old_amt - parseInt(amt);
-    setChequingBalance(new_amt);
+    if (amt > getChequingBalance()){
+      $("#error-update").text("You cannot withdraw more money than you have in your chequing account!");
+      return false;
+    } else {
+      setChequingBalance(new_amt);
+    }
   } else {
     //update savings
     old_amt = parseInt(getSavingsBalance());
     new_amt = old_amt - parseInt(amt);
-    setSavingsBalance(new_amt);
+    if (amt > getSavingsBalance()){
+      $("#error-update").text("You cannot withdraw more money than you have in your savings account!");
+      return false;
+    } else {
+      setSavingsBalance(new_amt);
+    }
   }
   location.href = 'anothertransaction.html';
 }

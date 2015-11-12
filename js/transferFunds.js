@@ -95,9 +95,17 @@ function transferMoney(){
   }
 
   if (from_acc == "Chequing" && to_acc == "Savings"){
+    if (amount_to_transfer > getChequingBalance()){
+      $("#transfer-money").text("Sorry, you cannot transfer more money than you have in your chequing account!");
+      return false;
+    }
     depositMoneyUpdate(amount_to_transfer, "savings", storage);
     withdrawMoneyUpdate(amount_to_transfer, "chequing", storage);
   } else {
+    if (amount_to_transfer > getSavingsBalance()){
+      $("#transfer-money").text("Sorry, you cannot transfer more money than you have in your saving account!");
+      return false;
+    }
     depositMoneyUpdate(amount_to_transfer, "chequing", storage);
     withdrawMoneyUpdate(amount_to_transfer, "savings", storage);
   }

@@ -5,26 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>Bank</title>
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-  <script src="js/settingpage.js"></script>
+  <script src="js/transferFunds.js"></script>
 </head>
 <body>
-
-<div id = "pindiv">
-    <h1>Please enter your PIN:</h1>
-    <input type = "password" id="oldpin" maxlength="4">
-  </div>
-  <div id = "newpindiv">
-  <h1>Please enter your new PIN:</h1>
-    <input type = "password" id="newpin1" maxlength="4">
-    </div>
-  <div id = "newpindiv2">
-  <h1>Please retype your PIN:</h1>
-  <input type = "password" id="newpin2" maxlength="4">
-    </div>
-<div id="vkb-container">
+  <h1><div id="transfer-money"></div></h1>
+  <h1>From</h1>
+  <select id="from_acc">
+    <option value="chequing">Chequing</option>
+    <option value="savings">Savings</option>
+  </select>
+  <h1>To</h1>
+  <select id="to_acc">
+    <option value="chequing">Chequing</option>
+    <option value="savings">Savings</option>
+  </select>
+  <h1>Enter Amount</h1>
+  <input type="number" id="transfer-amount">
+  <div id="vkb-container">
     <div id="vkb">
       <div id="keyRow1" class="vkb-row">
         <a href="#" id="vkb-btn-1" class="vkb-btn">1</a>
@@ -48,6 +51,5 @@
       </div>
     </div>
   </div>
-   <a href="dash.html"><h1>Go Back</h1></a>
 </body>
 </html>

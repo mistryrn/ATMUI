@@ -37,7 +37,6 @@ function keyboardInput() {
         field_num_focus ++;
       }else if(field_num_focus == 3){
         validateInfo();
-        location.href = "dash.html";
       }
     }
     if (input.val().length > 0) {
@@ -54,6 +53,7 @@ function validateInfo(){
   if(userInfo['accountPin'] == $("#oldpin").val() && $("#newpin1").val() == $("#newpin2").val()){
     userInfo['accountPin'] = $("#newpin1").val();
     sessionStorage.setItem("User", JSON.stringify(userInfo));
+    location.href = "dash.html";
   }
 
 }

@@ -115,5 +115,7 @@ function validateInfo(){
   if(userInfo['accountPin'] == $("#oldpin").val() && $("#newpin1").val() == $("#newpin2").val()){
     setAccountPin($("#newpin1").val());
     location.href = "dash.html";
+  }else{
+    $("#feedback").text("Error. Either your initial pin was wrong or you did not type the same new pin.");
   }
 }

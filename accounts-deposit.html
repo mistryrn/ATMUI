@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Dashboard</title>
+  <title>Select an Account</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- <script type="text/javascript" src="functionality.js"></script> -->
   <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/amountUpdate.js"></script>
 
 </head>
 <body>
-  <div id="container">
-    <div id="left">
-      <div id="upper">
-        <h1>Tigran Martikian</h1>
-        <h2>Card Holder</h2>
-        <h1><div id="accountnum"></div></h1>
-        <h2>Account Number</h2>
-      </div>
-      <div id="lower">
-        <a href="amount.html" onclick="accountUpdate(this)" id="chequing-deposit"><h1>Chequing</h1></a>
-        <a href="amount.html" onclick="accountUpdate(this)" id="savings-deposit"><h1>Savings</h1></a>
-        <a href = "dash.html"><h1>Go Back</h1></a>
-      </div>
+  <header>
+    <div id="header-left">
+      <h1>Tigran Martikian</h1>
+      <h2>Card Holder</h2>
+      <h1><div id="accountnum"></div></h1>
+      <h2>Account Number</h2>
     </div>
-    <div id="right">
+    <div id="header-right">
       <h1><div id="chequingBalance"></div></h1>
       <h2>Chequing Balance</h2>
       <h1><div id="savingsBalance"></div></h1>
       <h2>Savings Balance</h2>
     </div>
+  </header>
+  <div id="account-button-container">
+    <div id="account-buttons">
+      <div id="account-buttons-top">
+        <a href="amount.html" onclick="accountUpdate(this)" id="chequing-deposit" class="account-btn">Chequing</a>
+      </div>
+      <div id="account-buttons-bottom">
+        <a href="amount.html" onclick="accountUpdate(this)" id="savings-deposit" class="account-btn">Savings</a>
+      </div>
+    </div>
+  </div>
+  <div id="back-btn">
+    <a href = "dash.html">Go Back</a>
   </div>
 </body>
 </html>

@@ -5,14 +5,34 @@ var account_num_focus = true;
 
 $(document).ready(function() {
   $("#completionAlert").hide();
-  $("#accnum").focus();
-  $("#pin").hide();
+  $("#main-2").hide();
+  $("#main-3").hide();
+  $("#vkb-container").hide();
   $("#vkb-btn-enter").addClass("disabled");
   $("#vkb-btn-del").addClass("disabled");
-  keyboardInput();
+  $("#start-btn").click(function(e) {
+    e.preventDefault();
+    mainStart();
+  });
   var users = getSessionStorage();
   init_money(users);
 });
+
+// Main Page ===========================================
+function mainStart() {
+  $("#main-1").fadeOut(334, function () {
+    $("#main-2").show();
+    $("#vkb-container").show();
+    keyboardInput();
+    $("#accnum").focus();
+  });
+}
+function goToPin() {
+  $("#main-2").fadeOut(334, function () {
+    $("#main-3").show();
+  });
+}
+// Main Page End =======================================
 
 // Virtual Keyboard Stuff ===============================
 
@@ -41,12 +61,16 @@ function keyboardInput() {
         $("#vkb-btn-del").addClass("disabled");
     } else if (e.target.id === "vkb-btn-enter") {
       if (account_num_focus) {
-        $("#pin").show();
+        goToPin();
+        input = $('#numpin');
         $("#numpin").focus();
+        $("#vkb-btn-enter").addClass("disabled");
         account_num_focus = false;
       } else {
         validateAccount();
-        location.href = 'dash.html';
+        $("#main-3,#vkb-container").fadeOut(500, function() {
+          location.href = 'dash.html';
+        });
       }
     }
     if (input.val().length > 0) {
@@ -112,7 +136,7 @@ function setAccountNum(num){
   var users = getSessionStorage();
   users['accountNumber'] = num;
   updateSessionStorage(users);
-  $("#accountnum").text(users['accountNumber']);
+  $("#accountnum").text(users['accountNumber'].replace(/(.{4})/g,"$1 "));
 }
 
 function setSavingsBalance(amt){
@@ -134,7 +158,7 @@ function updateSessionStorage(user){
 }
 
 function thankyouAlert(){
-  $("#transactionpage").hide();
+  $("#transactionpage,#receipt").hide();
   $("#completionAlert").show();
   setTimeout(closeAlert, 3000);
 }
@@ -172,9 +196,9 @@ function receipt(){
   var chequing_balance = account['chequingBalance'];
   var saving_balance = account['savingsBalance'];
 
-  $("#acc_num").text(account_num);
-  $("#cheq_balance").text(chequing_balance);
-  $("#saving_balance").text(saving_balance);
+  $("#acc_num").text(account_num.replace(/(.{4})/g,"$1 "));
+  $("#cheq_balance").text("$"+chequing_balance);
+  $("#saving_balance").text("$"+saving_balance);
   var currentdate = new Date();
   var time = currentdate.getDate() + "/"
                 + (currentdate.getMonth()+1)  + "/"

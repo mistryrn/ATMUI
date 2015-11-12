@@ -4,7 +4,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Bank</title>
+  <title>Generic Bank ATM</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 
@@ -20,13 +20,23 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/main.js"></script>
+
 </head>
 <body>
-  <div id = "account">
-    <h1 id>Please enter your Account Number:</h1>
+  <header>
+    <img id="logo-img" src="images/gb-logo-white.png">
+    <h1 id="logo-title">Generic Bank</h1>
+  </header>
+  <div id="main-1">
+    <h1>Welcome to a Generic Bank ATM!</h1>
+    <h2>Please tap the "Start" button to begin.</h2>
+    <a id="start-btn" href="#">START</a>
+  </div>
+  <div id="main-2">
+    <h1>Please enter your Account Number:</h1>
     <input type = "text" id="accnum" maxlength="16">
   </div>
-  <div id = "pin">
+  <div id="main-3">
     <h1>Please enter your PIN:</h1>
     <input type = "password" id="numpin" maxlength="4">
   </div>
@@ -48,9 +58,9 @@
         <a href="#" id="vkb-btn-9" class="vkb-btn">9</a>
       </div>
       <div id="keyRow4" class="vkb-row">
-        <a href="#" id="vkb-btn-del" class="vkb-btn">Del</a>
+        <a href="#" id="vkb-btn-del" class="vkb-btn">Delete</a>
         <a href="#" id="vkb-btn-0" class="vkb-btn">0</a>
-        <a href="#" id="vkb-btn-enter" class="vkb-btn">&raquo;</a>
+        <a href="#" id="vkb-btn-enter" class="vkb-btn">Enter</a>
       </div>
     </div>
   </div>

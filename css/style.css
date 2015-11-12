@@ -1,6 +1,16 @@
 /* GENERAL */
+html, body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
 html {
-    background-color: #1D242B;
+    background-color: rgb(2,36,72); /*top colour*/
+    background-image: -webkit-linear-gradient(top, rgb(2,36,72), rgb(48,162,142));
+    background-image:    -moz-linear-gradient(top, rgb(2,36,72), rgb(48,162,142));
+    background-image:      -o-linear-gradient(top, rgb(2,36,72), rgb(48,162,142));
+    background-image:         linear-gradient(to bottom, rgb(2,36,72), rgb(48,162,142));
     font-family: Helvetica;
 }
 body {
@@ -8,43 +18,107 @@ body {
 }
 h1 {
     color: white;
+    margin: 0;
 }
 h2 {
     color: #6AA3AD;
-    text-transform: uppercase;
-    margin-top: -20px;
+    margin: 0;
+}
+
+/* WELCOME PAGE */
+header {
+    background-color: rgba(48, 162, 142, 0.7);
+    height: 140px;
+    padding: 0 20px;
+    padding-top: 10px;
+}
+header img,
+header h1 {
+    display: inline-block;
+    vertical-align: middle;
+}
+#logo-img {
+    width: 100px;
+    padding: 20px;
+}
+#main-1 {
+    text-align: center;
+    margin-top: 60px;
+}
+#start-btn {
+    display: inline-block;
+    margin-top: 50px;
+    background-color: #2ECC71;
+    padding: 20px 50px;
+    color: white;
+    border-radius: 30px;
+    border-bottom: 2px #424242 solid;
+}
+#start-btn:hover {
+    background-color: #1F844A;
+}
+#main-2 h1, #main-3 h1 {
+    margin-bottom: 10px;
+}
+#main-2, #main-3 {
+    display: block;
+    margin-top: 60px;
+    text-align: center;
+}
+#accnum, #numpin {
+    text-align: center;
+    padding: 10px 0;
+    width: 500px;
+    font-size: larger;
+}
+#vkb-container {
+    display: block;
+    margin-top: 30px;
 }
 
 /* VIRTUAL KEYBOARD */
 #vkb {
-    width: 160px;
-    height: 200px;
+    position: absolute;
+    left: 50%;
+    margin-left: -150px;
+    bottom: 0;
+    width: 300px;
+    height: 300px;
 }
 .vkb-row {
-    height: 50px;
+    height: 60px;
 }
 .vkb-btn {
     display: inline-block;
-    width: 48px;
-    padding: 10px 0;
-    border: 1px solid #676767;
-    border-radius: 11px;
+    width: 95px;
+    padding: 12px 0;
+    border-bottom: 2px solid #424242;
+    border-radius: 30px;
     background-color: #40505F;
+}
+.vkb-btn:hover,
+.dash-btn:hover,
+.account-btn:hover,
+#back-btn a:hover {
+    background-color: #2A3743;
+    color: #fff;
 }
 #vkb-btn-del {
     background-color: #E74C3C;
 }
+#vkb-btn-del:hover {
+    background-color: #B33A2E;
+}
 #vkb-btn-enter {
     background-color: #2ECC71;
+}
+#vkb-btn-enter:hover {
+    background-color: #1F844A;
 }
 a {
     color: #222;
     text-decoration: none;
     text-align: center;
-}
-a:hover {
-    background-color: #2A3743;
-    color: #fff;
 }
 a.disabled {
     opacity: 0.25;
@@ -53,13 +127,148 @@ a.disabled {
 }
 
 /* DASHBOARD */
-#right {
-    float: right;
-}
-#left {
+#header-left {
     float: left;
 }
-#lower {
+#header-right {
+    display: inline;
+    float: right;
+}
+#button-container {
+    position: relative;
+    height: 70%;
+}
+#buttons {
+    width: 489px;
+    height: 100px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -50px 0 0 -244px;
+}
+.dash-btn,
+.account-btn {
+    background-color: #40505F;
+    display: inline-block;
+    width: 130px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 30px;
+    border-bottom: 2px solid #424242;
+}
+
+/* ACCOUNT SELECTION */
+#account-button-container {
+    position: relative;
+    height: 70%;
+}
+#account-buttons {
+    width: 160px;
+    height: 100px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    margin: -50px 0 0 -80px;
+}
+#back-btn {
     position: absolute;
     bottom: 0;
+    left: 0;
+    margin: 10px 20px;
+}
+#back-btn a {
+    background-color: #E74C3C;
+    display: inline-block;
+    width: 130px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 30px;
+    border-bottom: 2px solid #424242;
+}
+#back-btn a:hover {
+    background-color: #B33A2E;
+}
+
+/* AMOUNTS */
+#amount-container {
+    text-align: center;
+    margin-top: 20px;
+}
+#amount-container h2,
+#transactionpage h2 {
+    margin: 5px 0;
+}
+#error-update {
+    color: #E74C3C;
+}
+
+/* ANOTHER TRANSACTION */
+#transactionpage {
+    text-align: center;
+    margin-top: 20px;
+}
+#completionAlert {
+    margin-top: 70px;
+    text-align: center;
+}
+#receipt {
+    text-align: center;
+    width: 600px;
+    margin: 30px auto 0 auto;
+    background-color: white;
+}
+#receipt-title {
+    color: #222;
+    margin-bottom: 20px;
+    padding-top: 20px;
+}
+.receipt-row {
+    height: 50px;
+    padding: 0 20px;
+}
+.receipt-heading {
+    display: inline-block;
+    color: #222;
+    font-size: x-large;
+    float: left;
+}
+.receipt-value {
+    display: inline-block;
+    color: #9C9C9C;
+    font-size: x-large;
+    float: right;
+}
+
+/* CHANGE PIN */
+#changepin {
+    text-align: center;
+    margin-top: 20px;
+}
+#changepin h2 {
+    padding: 5px 0;
+}
+
+/* TRANSFER FUNDS */
+#transferfunds {
+    display: block;
+    margin: 20px auto;
+    width: 250px;
+    height: 60px;
+}
+#tf-left {
+    height: 90px;
+    display: inline-block;
+    float: left;
+}
+#tf-right {
+    height: 90px;
+    display: inline-block;
+    float: right;
+}
+#transferinfo {
+    text-align: center;
 }

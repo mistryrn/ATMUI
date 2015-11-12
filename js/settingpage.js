@@ -79,7 +79,7 @@ function setAccountNum(num){
   var users = getSessionStorage();
   users['accountNumber'] = num;
   updateSessionStorage(users);
-  $("#accountnum").text(users['accountNumber']);
+  $("#accountnum").text(users['accountNumber'].replace(/(.{4})/g,"$1 "));
 }
 
 function setAccountPin(pin){
@@ -116,6 +116,6 @@ function validateInfo(){
     setAccountPin($("#newpin1").val());
     location.href = "dash.html";
   }else{
-    $("#feedback").text("Error. Either your initial pin was wrong or you did not type the same new pin.");
+    $("#feedback").text("Error. Either your current pin was incorrect, or you did not re-enter the same new pin twice.");
   }
 }

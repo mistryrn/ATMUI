@@ -1,32 +1,50 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Bank</title>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <title>Transfer Funds</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
+  <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/transferFunds.js"></script>
 </head>
 <body>
-  <h1><div id="transfer-money"></div></h1>
-  <h1>From</h1>
-  <select id="from_acc">
-    <option value="chequing">Chequing</option>
-    <option value="savings">Savings</option>
-  </select>
-  <h1>To</h1>
-  <select id="to_acc">
-    <option value="chequing">Chequing</option>
-    <option value="savings">Savings</option>
-  </select>
-  <h1>Enter Amount</h1>
-  <input type="number" id="transfer-amount">
+  <header>
+    <div id="header-left">
+      <h1>Tigran Martikian</h1>
+      <h2>Card Holder</h2>
+      <h1><div id="accountnum"></div></h1>
+      <h2>Account Number</h2>
+    </div>
+    <div id="header-right">
+      <h1><div id="chequingBalance"></div></h1>
+      <h2>Chequing Balance</h2>
+      <h1><div id="savingsBalance"></div></h1>
+      <h2>Savings Balance</h2>
+    </div>
+  </header>
+  <div id="transferfunds">
+    <h1>Transfer Funds</h1>
+    <div id="tf-left">
+      <h2>From</h2>
+      <select id="from_acc">
+        <option value="chequing">Chequing</option>
+        <option value="savings">Savings</option>
+      </select>
+    </div>
+    <div id="tf-right">
+      <h2>To</h2>
+      <select id="to_acc">
+        <option value="chequing">Chequing</option>
+        <option value="savings">Savings</option>
+      </select>
+    </div>
+  </div>
+  <div id="transferinfo">
+    <h1>Enter Amount</h1>
+    <input type="text" id="transfer-amount">
+    <h2 id="error-update"><div id="transfer-money"></div></h2>
+  </div>
   <div id="vkb-container">
     <div id="vkb">
       <div id="keyRow1" class="vkb-row">
@@ -45,12 +63,14 @@
         <a href="#" id="vkb-btn-9" class="vkb-btn">9</a>
       </div>
       <div id="keyRow4" class="vkb-row">
-        <a href="#" id="vkb-btn-del" class="vkb-btn">Del</a>
+        <a href="#" id="vkb-btn-del" class="vkb-btn">Delete</a>
         <a href="#" id="vkb-btn-0" class="vkb-btn">0</a>
-        <a href="#" id="vkb-btn-enter" class="vkb-btn">&raquo;</a>
+        <a href="#" id="vkb-btn-enter" class="vkb-btn">Enter</a>
       </div>
     </div>
   </div>
-  <a href = "dash.html"><h1>Go Back</h1></a>
+  <div id="back-btn">
+    <a href = "dash.html">Go Back</a>
+  </div>
 </body>
 </html>

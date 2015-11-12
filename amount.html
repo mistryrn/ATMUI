@@ -1,55 +1,70 @@
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-  <title>Bank</title>
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+  <title>Choose an Amount</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-
+  <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/amountUpdate.js"></script>
+
 </head>
 <body>
-<div id="withdrawal-buttons">
-<button id="select_20" onclick="presetAmount(20);"><h1>$20</h1></button>
-<button id="select_40" onclick="presetAmount(40);"><h1>$40</h1></button>
-<button id="select_60" onclick="presetAmount(60);"><h1>$60</h1></button>
-<button id="select_80" onclick="presetAmount(80);"><h1>$80</h1></button>
-<button id="select_100" onclick="presetAmount(100);"><h1>$100</h1></button>
-</div>
-  <h1><div id="accountinfo"></div></h1>
-  <h1><div id="error-update"></div></h1>
-    <h1>Enter Amount</h1>
-    <input type="number" id="amountUpdate">
-    <div id="vkb-container">
-      <div id="vkb">
-        <div id="keyRow1" class="vkb-row">
-          <a href="#" id="vkb-btn-1" class="vkb-btn">1</a>
-          <a href="#" id="vkb-btn-2" class="vkb-btn">2</a>
-          <a href="#" id="vkb-btn-3" class="vkb-btn">3</a>
-        </div>
-        <div id="keyRow2" class="vkb-row">
-          <a href="#" id="vkb-btn-4" class="vkb-btn">4</a>
-          <a href="#" id="vkb-btn-5" class="vkb-btn">5</a>
-          <a href="#" id="vkb-btn-6" class="vkb-btn">6</a>
-        </div>
-        <div id="keyRow3" class="vkb-row">
-          <a href="#" id="vkb-btn-7" class="vkb-btn">7</a>
-          <a href="#" id="vkb-btn-8" class="vkb-btn">8</a>
-          <a href="#" id="vkb-btn-9" class="vkb-btn">9</a>
-        </div>
-        <div id="keyRow4" class="vkb-row">
-          <a href="#" id="vkb-btn-del" class="vkb-btn">Del</a>
-          <a href="#" id="vkb-btn-0" class="vkb-btn">0</a>
-          <a href="#" id="vkb-btn-enter" class="vkb-btn">&raquo;</a>
-        </div>
+  <header>
+    <div id="header-left">
+      <h1>Tigran Martikian</h1>
+      <h2>Card Holder</h2>
+      <h1><div id="accountnum"></div></h1>
+      <h2>Account Number</h2>
+    </div>
+    <div id="header-right">
+      <h1><div id="chequingBalance"></div></h1>
+      <h2>Chequing Balance</h2>
+      <h1><div id="savingsBalance"></div></h1>
+      <h2>Savings Balance</h2>
+    </div>
+  </header>
+  <div id="amount-container">
+    <h1><div id="accountinfo"></div></h1>
+    <h2><div id="error-update"></div></h2>
+    <h2>Please select an amount:</h2>
+    <div id="withdrawal-buttons">
+      <a id="select_20" class="vkb-btn" onclick="presetAmount(20);">$20</a>
+      <a id="select_40" class="vkb-btn" onclick="presetAmount(40);">$40</a>
+      <a id="select_60" class="vkb-btn" onclick="presetAmount(60);">$60</a>
+      <a id="select_80" class="vkb-btn" onclick="presetAmount(80);">$80</a>
+      <a id="select_100" class="vkb-btn" onclick="presetAmount(100);">$100</a>
+    </div>
+    <h2>Or enter your own:</h2>
+    <input type="text" id="amountUpdate">
+  </div>
+  <div id="vkb-container">
+    <div id="vkb">
+      <div id="keyRow1" class="vkb-row">
+        <a href="#" id="vkb-btn-1" class="vkb-btn">1</a>
+        <a href="#" id="vkb-btn-2" class="vkb-btn">2</a>
+        <a href="#" id="vkb-btn-3" class="vkb-btn">3</a>
+      </div>
+      <div id="keyRow2" class="vkb-row">
+        <a href="#" id="vkb-btn-4" class="vkb-btn">4</a>
+        <a href="#" id="vkb-btn-5" class="vkb-btn">5</a>
+        <a href="#" id="vkb-btn-6" class="vkb-btn">6</a>
+      </div>
+      <div id="keyRow3" class="vkb-row">
+        <a href="#" id="vkb-btn-7" class="vkb-btn">7</a>
+        <a href="#" id="vkb-btn-8" class="vkb-btn">8</a>
+        <a href="#" id="vkb-btn-9" class="vkb-btn">9</a>
+      </div>
+      <div id="keyRow4" class="vkb-row">
+        <a href="#" id="vkb-btn-del" class="vkb-btn">Delete</a>
+        <a href="#" id="vkb-btn-0" class="vkb-btn">0</a>
+        <a href="#" id="vkb-btn-enter" class="vkb-btn">Enter</a>
       </div>
     </div>
-    <a href="javascript:history.back(-1);"><h1>Go Back</h1></a>
+  </div>
+  <div id="back-btn">
+    <a href="javascript:history.back(-1);">Go Back</a>
+  </div>
   <script>
     $(document).ready(function() {
       setText();

@@ -40,18 +40,6 @@ function getChequingBalance(){
   return users['chequingBalance'];
 }
 
-function getAccountNum(){
-  var users = getSessionStorage();
-  return users['accountNumber'];
-}
-
-function setAccountNum(num){
-  var users = getSessionStorage();
-  users['accountNumber'] = num;
-  updateSessionStorage(users);
-  $("#accountnum").text(users['accountNumber']);
-}
-
 function setSavingsBalance(amt){
   var users = getSessionStorage();
   users['savingsBalance'] = amt;

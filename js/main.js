@@ -10,7 +10,7 @@ $(document).ready(function() {
   $("#vkb-btn-enter").addClass("disabled");
   $("#vkb-btn-del").addClass("disabled");
   keyboardInput();
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   init_money(users);
 });
 
@@ -94,36 +94,36 @@ function validAccNum(num){
 }
 
 function getSavingsBalance(){
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   return users['savingsBalance'];
 }
 
 function getChequingBalance(){
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   return users['chequingBalance'];
 }
 
 function getAccountNum(){
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   return users['accountNumber'];
 }
 
 function setAccountNum(num){
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   users['accountNumber'] = num;
   updateSessionStorage(users);
   $("#accountnum").text(users['accountNumber']);
 }
 
 function setSavingsBalance(amt){
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   users['savingsBalance'] = amt;
   updateSessionStorage(users);
   $("#savingsBalance").text("$" + users['savingsBalance']);
 }
 
 function setChequingBalance(amt){
-  var users = JSON.parse(sessionStorage.getItem('User'));
+  var users = getSessionStorage();
   users['chequingBalance'] = amt;
   updateSessionStorage(users);
   $("#chequingBalance").text("$" + users['chequingBalance']);
@@ -142,4 +142,7 @@ function thankyouAlert(){
 function closeAlert(){
   $("#completionAlert").fadeOut("slow");
   location.href = "index.html";
+
+function getSessionStorage(){
+  return JSON.parse(sessionStorage.getItem('User'));
 }

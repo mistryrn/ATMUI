@@ -4,9 +4,11 @@
   <title>Dashboard</title>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  <!-- jQuery library -->
+  <!-- <script type="text/javascript" src="functionality.js"></script> -->
+  <!-- JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="js/main.js"></script>
+
 </head>
 <body>
   <div id="container">
@@ -18,10 +20,8 @@
         <h2>Account Number</h2>
       </div>
       <div id="lower">
-        <a href="accounts-withdraw.html"><h1>Withdraw</h1></a>
-        <a href="accounts-deposit.html"><h1>Deposit</h1></a>
-        <h1>Transfer Funds</h1>
-        <h1>Change PIN</h1>
+        <a href="amount.html" onclick="accountUpdate(this)" id="chequing-deposit"><h1>Chequing</h1></a>
+        <a href="amount.html" onclick="accountUpdate(this)" id="savings-deposit"><h1>Savings</h1></a>
       </div>
     </div>
     <div id="right">

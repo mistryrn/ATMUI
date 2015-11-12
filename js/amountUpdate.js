@@ -107,7 +107,12 @@ function setText(){
 
 function updateMoney(){
   var storage = getSessionStorage();
-  var amount = $("#amountUpdate").val();
+  var amount;
+  if ($("#amountUpdate").val() == ""){
+    amount = storage['updateAmount'];
+  } else {
+    amount = $("#amountUpdate").val();
+  }
   var transactionType = storage['accountType'];
   var action = storage['accountAction']
   if (transactionType == "deposit"){
@@ -175,7 +180,13 @@ function withdrawMoneyUpdate(amt, action, storage){
   location.href = 'anothertransaction.html';
 }
 
+function setPresetAmount(amt){
+  var sess = getSessionStorage();
+  sess['updateAmount'] = amt;
+  updateSessionStorage(sess);
+}
+
 function presetAmount(amount){
-  $("#amountUpdate").val(amount);
+  setPresetAmount(amount);
   updateMoney();
 }

@@ -50,7 +50,6 @@ function keyboardInput() {
 }
 
 function validateInfo(){
-  debugger;
   var userInfo = JSON.parse(sessionStorage.getItem('User'));
   if(userInfo['accountPin'] == $("#oldpin").val() && $("#newpin1").val() == $("#newpin2").val()){
     userInfo['accountPin'] = $("#newpin1").val();
